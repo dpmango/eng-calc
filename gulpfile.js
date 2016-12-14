@@ -26,14 +26,14 @@ var browserSync = require('browser-sync').create();
 
 // default task
 gulp.task('default', function (callback) {
-  runSequence(['postcss', 'browserSync'], 'watch',
+  runSequence(['sass', 'browserSync'], 'watch',
     callback
   )
 })
 
 // watch
 gulp.task('watch', function(){
-  //gulp.watch('./src/sass/*.+(scss|sass)', ['sass']);
+  gulp.watch('./src/sass/*.+(scss|sass)', ['sass']);
   gulp.watch('./src/pcss/*.+(sss|css)', ['postcss']);
   gulp.watch('./src/*.html', browserSync.reload);
   gulp.watch('./src/js/*.js', browserSync.reload);
@@ -43,7 +43,7 @@ gulp.task('watch', function(){
 gulp.task('build', function (callback) {
   runSequence(
     'clean:dist',
-    //'sass',
+    'sass',
     ['useref', 'images', 'fonts'],
     callback
   )
