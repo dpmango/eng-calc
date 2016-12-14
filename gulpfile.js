@@ -1,10 +1,20 @@
 var gulp = require('gulp');
+var rename  = require('gulp-rename');
 var postcss = require('gulp-postcss');
 var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('autoprefixer');
+var sugarss = require('sugarss');
+var cssImport = require('postcss-import');
+var mixins = require('postcss-mixins');
+var simpleVars = require('postcss-simple-vars');
+var nested = require('postcss-nested');
+var cssnext = require('gulp-cssnext');
+var mqpacker = require('css-mqpacker');
+var pixrem = require('pixrem');
+
+var cssnano = require('cssnano');
 var sass = require('gulp-sass');
 var sassGlob = require('gulp-sass-glob');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
@@ -16,15 +26,16 @@ var browserSync = require('browser-sync').create();
 
 // default task
 gulp.task('default', function (callback) {
-  runSequence(['sass', 'browserSync'], 'watch',
+  runSequence(['postcss', 'browserSync'], 'watch',
     callback
   )
 })
 
 // watch
 gulp.task('watch', function(){
-  gulp.watch('./src/sass/*.+(scss|sass)', ['sass']);
-  gulp.watch('./dist/*.html', browserSync.reload);
+  //gulp.watch('./src/sass/*.+(scss|sass)', ['sass']);
+  gulp.watch('./src/pcss/*.+(sss|css)', ['postcss']);
+  gulp.watch('./src/*.html', browserSync.reload);
   gulp.watch('./src/js/*.js', browserSync.reload);
 })
 
@@ -32,7 +43,7 @@ gulp.task('watch', function(){
 gulp.task('build', function (callback) {
   runSequence(
     'clean:dist',
-    'sass',
+    //'sass',
     ['useref', 'images', 'fonts'],
     callback
   )
@@ -43,16 +54,23 @@ gulp.task('build', function (callback) {
 /////
 
 var processors = [
-    autoprefixer({browsers: ['> 1%', 'last 2 versions', 'IE 8']}),
+    cssImport(),
+    mixins(),
+    simpleVars(),
+    nested(),
+    autoprefixer({browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
+    mqpacker(),
+    pixrem(),
     cssnano(),
 ];
 
 gulp.task('postcss', function() {
-  return gulp.src('./src/css/*.css')
+  return gulp.src('./src/pcss/*.sss')
       .pipe( sourcemaps.init() )
-      .pipe( postcss(processors) )
+      .pipe( postcss(processors, { parser: sugarss }) )
       .pipe( sourcemaps.write('.') )
-      .pipe( gulp.dest('./dist') );
+      .pipe(rename({ extname: '.css' }))
+      .pipe( gulp.dest('./src/css') );
 });
 
 gulp.task('sass', function() {
@@ -61,7 +79,7 @@ gulp.task('sass', function() {
       .pipe( sass({ includePaths : ['./src/sass'] }) )
       .pipe( postcss(processors) )
       .pipe( sourcemaps.write('.') )
-      .pipe( gulp.dest('./dist') )
+      .pipe( gulp.dest('./src/css') )
       .pipe(browserSync.reload({
         stream: true
       }));
@@ -75,7 +93,7 @@ gulp.task('useref', function(){
   return gulp.src('./src/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
-    //.pipe(gulpIf('*.css', cssnano()))
+    .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('dist'))
 });
 

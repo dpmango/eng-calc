@@ -12,17 +12,26 @@
     "autoprefixer": "^6.5.3",
     "bootstrap": "^4.0.0-alpha.5",
     "browser-sync": "^2.18.2",
+    "css-mqpacker": "^5.0.1",
     "cssnano": "^3.8.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.5",
+    "gulp-cssnext": "^1.0.1",
     "gulp-imagemin": "^3.1.1",
     "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sass-glob": "^1.0.6",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
-    "run-sequence": "^1.2.2"
+    "pixrem": "^3.0.2",
+    "postcss-import": "^9.0.0",
+    "postcss-mixins": "^5.4.0",
+    "postcss-nested": "^1.0.0",
+    "postcss-simple-vars": "^3.0.0",
+    "run-sequence": "^1.2.2",
+    "sugarss": "^0.2.0"
   }
 }
