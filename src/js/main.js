@@ -39,6 +39,11 @@ $(document).ready(function(){
 		max: 3,
 		value: 1,
 		animate: 'slow',
+    slide: function (ev, ui) {
+      $( "#sliderEnd" ).slider({
+        value: ui.value
+      });
+    },
 		change: function( event, ui ) {
 			$("#sliderStart-value").val(ui.value);
 			$(this).find('.calc__sliders__item__slider__tip').removeClass('active');

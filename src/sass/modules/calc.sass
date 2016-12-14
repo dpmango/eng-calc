@@ -106,6 +106,9 @@ body
 
 .calc__sliders
   padding: 30px 20px 30px 10px
+  @include mq($until: mobile)
+    padding-right: 0px
+    padding-left: 0px
 
 .calc__sliders__item
   margin-bottom: 30px
@@ -123,6 +126,9 @@ body
   border-radius: 4px
   border: 2px solid #f0f0f0
   padding: 20px 15px 20px 15px
+  @include mq($until: mobile)
+    padding-left: 10px
+    padding-right: 10px
   margin-top: 7px
 
 #sliderTime .ui-slider-handle
