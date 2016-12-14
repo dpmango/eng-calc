@@ -33,7 +33,7 @@ gulp.task('default', function (callback) {
 
 // watch
 gulp.task('watch', function(){
-  gulp.watch('./src/sass/*.+(scss|sass)', ['sass']);
+  gulp.watch('./src/sass/**/*.+(scss|sass)', ['sass']);
   gulp.watch('./src/pcss/*.+(sss|css)', ['postcss']);
   gulp.watch('./src/*.html', browserSync.reload);
   gulp.watch('./src/js/*.js', browserSync.reload);
@@ -54,13 +54,13 @@ gulp.task('build', function (callback) {
 /////
 
 var processors = [
-    cssImport(),
-    mixins(),
-    simpleVars(),
-    nested(),
+    // cssImport(),
+    // mixins(),
+    // simpleVars(),
+    // nested(),
     autoprefixer({browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
-    mqpacker(),
-    pixrem(),
+    // mqpacker(),
+    // pixrem(),
     cssnano(),
 ];
 
@@ -76,7 +76,7 @@ gulp.task('postcss', function() {
 gulp.task('sass', function() {
   return gulp.src('./src/sass/*.+(scss|sass)')
       .pipe( sourcemaps.init() )
-      .pipe( sass({ includePaths : ['./src/sass'] }) )
+      .pipe( sass({outputStyle: 'expanded'}, { includePaths : ['./src/sass'] }) )
       .pipe( postcss(processors) )
       .pipe( sourcemaps.write('.') )
       .pipe( gulp.dest('./src/css') )
@@ -93,7 +93,7 @@ gulp.task('useref', function(){
   return gulp.src('./src/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulpIf('*.css', cssnano()))
+    //.pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('dist'))
 });
 

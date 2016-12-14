@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800')
+
+$primary: #00c3bc
+$blue: #394b84
+$red: #c2150b
+
+body
+  background: #f0f0f0
+  font-family: 'Verdana'
+  color: #000
+
+.container
+  width: 100%
+  max-width: 980px
+  @include mq($until: desktop)
+    padding-left: 30px
+    padding-right: 30px
+  @include mq($until: mobile)
+    padding-left: 15px
+    padding-right: 15px
+
+.heading
+  font-size: 21px
+  line-height: 1.2em
+  margin-top: 30px
+  margin-bottom: 30px
+  @include mq($until: mobile)
+    margin-top: 20px
+    margin-bottom: 20px
+
+.ico
+  display: inline-block
+  content: ' '
+  font-style: normal
+
+.ico-num
+  font-size: 48px
+  font-family: 'Open Sans', sans-serif
+  font-weight: 800
+  line-height: 1em
+  display: inline-block
+  position: absolute
+  left: 0
+  top: -5px
+
+.flex
+  display: flex
+  @include mq($until: mobile)
+    display: block
+
+// Calc module
+.calc
+  margin-bottom: 50px
+  @include mq($until: mobile)
+    margin-bottom: 40px
+
+.calc__sidebar-bg
+  background: $primary url('../images/baloon.png') no-repeat -40px 25px
+  color: white
+
+.calc__sidebar
+  padding: 30px 20px
+  @include mq($until: desktop)
+    padding-left: 0px
+    padding-right: 0px
+
+.calc__sidebar__steps
+
+.calc__sidebar__steps__item
+  position: relative
+  span
+    display: inline-block
+    padding-left: 40px
+    margin-bottom: 30px
+    line-height: 1.2em
+
+.calendar
+  background: url('../images/calendar.png') no-repeat center
+  position: relative
+  font-family: 'Open Sans', sans-serif
+  font-weight: 700
+  height: 174px
+  margin-bottom: 15px
+
+.calendar__values
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  text-align: center
+
+.calendar__number
+  color: $blue
+  font-size: 71px
+  padding-top: 60px
+  line-height: 1em
+  margin-left: -5px
+
+.calendar__type
+  color: $red
+  font-size: 18px
+
+//content
+.calc__sliders-bg
+  background: white
+
+.calc__sliders
+  padding: 30px 20px 30px 10px
+
+.calc__sliders__item
+  margin-bottom: 30px
+
+.calc__sliders__heading
+  font-size: 18px
+  padding-left: 10px
+  @include mq($until: tablet)
+    font-size: 16px
+
+  @include mq($until: mobile)
+    font-size: 14px
+
+.cal__sliders__slider__wrapper
+  border-radius: 4px
+  border: 2px solid #f0f0f0
+  padding: 20px 15px 20px 15px
+  margin-top: 7px
+
+#sliderTime .ui-slider-handle
+  margin-left: -2em
+.calc__sliders__item__slider
+  background: linear-gradient(to bottom, white 0%, white 50%, #f0f0f0 51%, #f0f0f0 100%)
+  border: 2px solid #f0f0f0 !important
+  border-radius: 5px
+  height: 14px !important
+  width: 100%
+  position: relative
+  margin-bottom: 25px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  .ui-slider-handle
+    background: #6eebe6 !important
+    border-radius: 50%
+    border: 5px solid #01afa9 !important
+    height: 40px
+    width: 40px
+    top: -15px
+    // margin-left: -2em
+    cursor: pointer
+    &:focus
+      outline: none !important
+  .ui-slider-range
+    background: linear-gradient(to bottom, #6eebe6 0%, #6eebe6 50%, #00c3bc 51%, #00c3bc 100%)
+    border: 2px solid #00c3bc
+    margin-top: -2px
+    margin-bottom: -2px
+    margin-left: -2px
+    height: 14px
+
+.calc__sliders__item__slider__tip
+  display: inline-block
+  color: #d3d3d3
+  font-size: 14px
+  cursor: pointer
+  margin-top: 25px
+  transition: all .2s ease
+  &.active
+    color: $primary
+    font-weight: 800
+    font-size: 18px
+    margin-top: 23px
+    @include mq($until: mobile)
+      font-size: 14px
+      margin-top: 25px

@@ -8,28 +8,99 @@
 	<title>page title </title>
 	<!--build:js js/main.min.js -->
 	<script src="/js/lib/jquery-3.1.1.min.js"></script>
+  <script src="/js/lib/jquery-ui.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- endbuild -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
+  <!--build:css css/style.min.css -->
+  <link rel="stylesheet" href="/css/lib/jquery-ui.min.css" type="text/css" />
+  <link rel="stylesheet" href="/css/lib/jquery-ui.theme.min.css" type="text/css" />
+	<link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <!-- endbuild -->
 	<!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
   <![endif]-->
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <p class="testing">Content</p>
+
+  <section class="calc">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="heading text-xs-center">Как быстро я достигну желаемого результата?</div>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <p class="testing">Something</p>
-      </div>
-      <div class="col-sm-4">
-        <p class="testing">Something</p>
+      <div class="row flex">
+        <div class="col-sm-4 calc__sidebar-bg">
+          <div class="calc__sidebar">
+            <div class="calc__sidebar__steps">
+                <div class="calc__sidebar__steps__item">
+                  <i class="ico ico-num">1</i><span>Установите ползунки на нухные вам позиции.</span>
+                </div>
+                <div class="calc__sidebar__steps__item">
+                  <i class="ico ico-num">2</i><span>Счетчик сам подскажет сколько времени потребуется для достижения желаемого результата.</span>
+                </div>
+            </div>
+            <div class="calendar">
+              <div class="calendar__values">
+                <div class="calendar__number">12</div>
+                <div class="calendar__type">месяцев</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-8 calc__sliders-bg">
+          <div class="calc__sliders">
+            <div class='calc__sliders__item'>
+              <div class='calc__sliders__heading'>
+                Я буду уделять изучению английского в день:
+              </div>
+              <div class="cal__sliders__slider__wrapper">
+                <div class='calc__sliders__item__slider' id="sliderTime">
+                  <span class='calc__sliders__item__slider__tip'>30 мин</span>
+                  <span class='calc__sliders__item__slider__tip'>1 час</span>
+                  <span class='calc__sliders__item__slider__tip'>1.5 часа</span>
+                  <span class='calc__sliders__item__slider__tip active'>2 часа</span>
+                </div>
+                <input type='hidden' id="sliderTime-value" class='slider-value' value='4'>
+              </div>
+            </div>
+            <!-- next item -->
+            <div class='calc__sliders__item'>
+              <div class='calc__sliders__heading'>
+                Мой уровень знаний на старте обучения:
+              </div>
+              <div class="cal__sliders__slider__wrapper">
+                <div class='calc__sliders__item__slider' id="sliderStart">
+                  <span class='calc__sliders__item__slider__tip active'>нулевой</span>
+                  <span class='calc__sliders__item__slider__tip'>начальный</span>
+                  <span class='calc__sliders__item__slider__tip'>средний</span>
+                </div>
+                <input type='hidden' id="sliderStart-value" class='slider-value' value='1'>
+              </div>
+            </div>
+            <!-- next item -->
+            <div class='calc__sliders__item'>
+              <div class='calc__sliders__heading'>
+                Моя цель - достичь уровня:
+              </div>
+              <div class="cal__sliders__slider__wrapper">
+                <div class='calc__sliders__item__slider' id="sliderEnd">
+                  <span class='calc__sliders__item__slider__tip'>начальный</span>
+                  <span class='calc__sliders__item__slider__tip active'>средний</span>
+                  <span class='calc__sliders__item__slider__tip'>выше среднего</span>
+                </div>
+                <input type='hidden' id="sliderEnd-value" class='slider-value' value='2'>
+              </div>
+            </div>
+            <!-- next item -->
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
+  </section>
 
 </body>
 </html>
