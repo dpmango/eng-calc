@@ -89,8 +89,8 @@ $(document).ready(function(){
     var time = $('#sliderTime-value').val();
     var start = $('#sliderStart-value').val();
     var end = $('#sliderEnd-value').val();
-    var setTime = "12"
-    var setVerb = "месяцев"
+    var setTime = "3"
+    var setVerb = "месяца"
 
     if ( start == "1" && end == "1" && time == "1" ){
       setTime = "8"
@@ -141,7 +141,7 @@ $(document).ready(function(){
     } else if ( start == "2" && end == "3" && time == "4" ) {
       setTime = "4"
     }
-    // НСредний – выше среднего
+    // Средний – выше среднего
     else if ( start == "3" && end == "3" && time == "1" ){
       setTime = "12"
     } else if ( start == "3" && end == "3" && time == "2" ) {
