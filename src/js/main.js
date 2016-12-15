@@ -62,7 +62,6 @@ $(document).ready(function(){
         setNeighborPos();
       }
       function setNeighborPos(){
-        console.log(target);
         if (target >= 3) {
           $("#sliderEnd").find('.ui-slider-handle').css('margin-left', '-30px');
         } else if (target == 1) {
@@ -104,6 +103,17 @@ $(document).ready(function(){
           $( "#sliderStart" ).slider({
             value: ui.value
           });
+          var target2 = $("#sliderStart").slider('value');
+          setNeighbor2Pos();
+      }
+      function setNeighbor2Pos(){
+        if (target2 >= 3) {
+          $("#sliderStart").find('.ui-slider-handle').css('margin-left', '-30px');
+        } else if (target2 == 1) {
+          $("#sliderStart").find('.ui-slider-handle').css('margin-left', '-10px');
+        } else{
+          $("#sliderStart").find('.ui-slider-handle').css('margin-left', '-20px');
+        }
       }
     },
 		change: function( event, ui ) {
