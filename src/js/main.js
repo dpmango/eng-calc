@@ -19,17 +19,21 @@ $(document).ready(function(){
     min: 1,
 		max: 4,
 		value: 4,
-		animate: 'slow',
+		animate: '10',
+    slide: function (ev, ui) {
+      if (ui.value > 3) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-30px');
+      } else if (ui.value == 1) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-10px');
+      } else{
+        $(this).find('.ui-slider-handle').css('margin-left', '-20px');
+      }
+    },
 		change: function( event, ui ) {
 			$("#sliderTime-value").val(ui.value);
 			$(this).find('.calc__sliders__item__slider__tip').removeClass('active');
 			$(this).find('.calc__sliders__item__slider__tip:nth-child(' + ui.value + ')').addClass('active');
       calc_timer();
-      if (ui.value > 3) {
-        $(this).find('.ui-slider-handle').css('margin-left', '-2em');
-      } else{
-        $(this).find('.ui-slider-handle').css('margin-left', '-0.6em');
-      }
 		}
   });
 
@@ -38,22 +42,43 @@ $(document).ready(function(){
     min: 1,
 		max: 3,
 		value: 1,
-		animate: 'slow',
+		animate: '10',
     slide: function (ev, ui) {
-      $( "#sliderEnd" ).slider({
-        value: ui.value
-      });
+      if (ui.value >= 3) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-30px');
+      } else if (ui.value == 1) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-10px');
+      } else{
+        $(this).find('.ui-slider-handle').css('margin-left', '-20px');
+      }
+      var target = $("#sliderEnd").slider('value');
+      var current = ui.value;
+
+      if (target < current){
+        $( "#sliderEnd" ).slider({
+          value: ui.value
+        });
+        var target = $("#sliderEnd").slider('value');
+        setNeighborPos();
+      }
+      function setNeighborPos(){
+        console.log(target);
+        if (target >= 3) {
+          $("#sliderEnd").find('.ui-slider-handle').css('margin-left', '-30px');
+        } else if (target == 1) {
+          $("#sliderEnd").find('.ui-slider-handle').css('margin-left', '-10px');
+        } else{
+          $("#sliderEnd").find('.ui-slider-handle').css('margin-left', '-20px');
+        }
+      }
+
     },
+
 		change: function( event, ui ) {
 			$("#sliderStart-value").val(ui.value);
 			$(this).find('.calc__sliders__item__slider__tip').removeClass('active');
 			$(this).find('.calc__sliders__item__slider__tip:nth-child(' + ui.value + ')').addClass('active');
       calc_timer();
-      if (ui.value > 2) {
-        $(this).find('.ui-slider-handle').css('margin-left', '-2em');
-      } else{
-        $(this).find('.ui-slider-handle').css('margin-left', '-0.6em');
-      }
 		}
   });
 
@@ -62,25 +87,34 @@ $(document).ready(function(){
     min: 1,
 		max: 3,
 		value: 2,
-		animate: 'slow',
+		animate: '10',
     slide: function (ev, ui) {
-        var target = $("#sliderStart").slider('value');
-        var current = ui.value;
+      if (ui.value >= 3) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-30px');
+      } else if (ui.value == 1) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-10px');
+      } else{
+        $(this).find('.ui-slider-handle').css('margin-left', '-20px');
+      }
+      var target = $("#sliderStart").slider('value');
+      var current = ui.value;
 
-        if (target > current) {
-            return false;
-        }
+      if (target > current) {
+          return false;
+      }
     },
 		change: function( event, ui ) {
+      if (ui.value >= 3) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-30px');
+      } else if (ui.value == 1) {
+        $(this).find('.ui-slider-handle').css('margin-left', '-10px');
+      } else{
+        $(this).find('.ui-slider-handle').css('margin-left', '-20px');
+      }
 			$("#sliderEnd-value").val(ui.value);
 			$(this).find('.calc__sliders__item__slider__tip').removeClass('active');
 			$(this).find('.calc__sliders__item__slider__tip:nth-child(' + ui.value + ')').addClass('active');
       calc_timer();
-      if (ui.value > 2) {
-        $(this).find('.ui-slider-handle').css('margin-left', '-2em');
-      } else{
-        $(this).find('.ui-slider-handle').css('margin-left', '-0.6em');
-      }
 		}
   });
 

@@ -132,7 +132,9 @@ body
   margin-top: 7px
 
 #sliderTime .ui-slider-handle
-  margin-left: -2em
+  margin-left: -30px
+#sliderStart .ui-slider-handle
+  margin-left: -10px
 .calc__sliders__item__slider
   background: linear-gradient(to bottom, white 0%, white 50%, #f0f0f0 51%, #f0f0f0 100%)
   border: 2px solid #f0f0f0 !important
@@ -144,6 +146,7 @@ body
   display: flex
   flex-direction: row
   justify-content: space-between
+  width: 100%
   .ui-slider-handle
     background: #6eebe6 !important
     border-radius: 50%
@@ -151,6 +154,7 @@ body
     height: 40px
     width: 40px
     top: -15px
+    margin-left: -20px
     // margin-left: -2em
     cursor: pointer
     &:focus
@@ -168,22 +172,45 @@ body
   color: #d3d3d3
   font-size: 14px
   cursor: pointer
-  margin-top: 25px
+  margin-top: 5px
   transition: all .2s ease
-  padding-left: 5px
-  padding-right: 5px
+  padding: 15px 15px
+  flex-grow: 1
+  text-align: center
+  width: 33%
+  @include mq($until: bp375)
+    width: auto
+  @include mq($until: tablet)
+    padding-left: 10px
+    padding-right: 10px
+  @include mq($until: mobile)
+    padding-left: 5px
+    padding-right: 5px
   &:first-child
     padding-left: 0
-  &:last-child
+    text-align: left
+  &:last-child, &.last
     padding-right: 0
+    text-align: right
   &.active
     color: $primary
     font-weight: 800
     font-size: 18px
-    margin-top: 23px
+    margin-top: 3px
     @include mq($until: tablet)
       font-size: 16px
 
     @include mq($until: mobile)
       font-size: 14px
-      margin-top: 25px
+      margin-top: 5px
+
+.calc__sliders__item__slider.four-items .calc__sliders__item__slider__tip
+  width: 25%
+  &:nth-child(2)
+    margin-left: -2%
+    @include mq($until: tablet)
+      margin-left: 0
+  &:nth-child(3)
+    margin-left: 10%
+    @include mq($until: tablet)
+      margin-left: 0
