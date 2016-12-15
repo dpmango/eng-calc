@@ -100,7 +100,10 @@ $(document).ready(function(){
       var current = ui.value;
 
       if (target > current) {
-          return false;
+          //return false;
+          $( "#sliderStart" ).slider({
+            value: ui.value
+          });
       }
     },
 		change: function( event, ui ) {
